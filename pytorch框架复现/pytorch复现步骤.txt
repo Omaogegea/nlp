@@ -1,0 +1,15 @@
+1、读取数据，手写softmax,将lable以onehot进行编码，模型为一层线性层，在训练部分手写前向传播，反向传播，梯度更新
+2、加入验证集，测试精度
+3、手写Dataset、Dataloader,Dataset负责数据的存储，Dataloader负责数据分发（batch_size,shuffle）
+4、手写模型增加linear+sigmoid+linear+linear+softmax
+5、将手写linear层封装成Linear类，类中包含linear层前向传播、反向传播、梯度更新方法
+6、将sigmoid和softmax封装成类，类中包含前向传播和反向传播的方法
+7、发现训练部分代码中的forward和backward规律，将他们封装到Module_List类中，从而实现训练时一键forward和一键backward,
+并且通过该类直接增或减模型部分。
+8、实现pytorch中print（model）就打印出模型结构（__repr__魔术方法），手写dropout
+9、封装Model模型，通过self.model_list=Module_List([]),获取到Module_List类中的前向传播、反向传播方法，并且在model.forward考虑是否传入lable,
+如果传入，返回loss值，用于反向传播及梯度更新，如果不传入，说明是在验证模型，
+10、手写SGD和动量SGD,实现
+	opt = MSGD(model.parameters(),lr=lr)
+	opt.step()
+                opt.zero_grad()
